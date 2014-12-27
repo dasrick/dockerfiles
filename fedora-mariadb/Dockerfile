@@ -2,16 +2,18 @@ FROM fedora:20
 
 MAINTAINER Enrico Hoffmann <dasrick@gmail.com>
 
-RUN yum -y update && yum -y install mariadb-server pwgen supervisor psmisc net-tools && yum clean all
+ENV MARIADB_VERSION 10.0.15
 
-# ADD ./start.sh /start.sh
-# ADD ./config_mariadb.sh /config_mariadb.sh
-# ADD ./supervisord.conf /etc/supervisord.conf
+RUN yum -y update && yum -y install MariaDB-server MariaDB-client && yum clean all
 
-# RUN chmod 755 /start.sh
-# RUN chmod 755 /config_mariadb.sh
-# RUN /config_mariadb.sh
+ADD server.cnf              /etc/my.cnf.d/server.cnf
+ADD create_admin_user.sh    /create_admin_user.sh
+ADD run.sh                  /run.sh
+
+RUN chmod 775 /*.sh
+
+VOLUME ["/data", "/var/log/mysql"]
 
 EXPOSE 3306
 
-# CMD ["/bin/bash", "/start.sh"]
+CMD ["/run.sh"]
