@@ -4,6 +4,8 @@ MAINTAINER Enrico Hoffmann <dasrick@gmail.com>
 
 ENV MARIADB_VERSION 10.0.15
 
+ADD MariaDB.repo /etc/yum.repos.d/MariaDB.repo
+
 RUN yum -y update && yum -y install MariaDB-server MariaDB-client && yum clean all
 
 ADD server.cnf              /etc/my.cnf.d/server.cnf
