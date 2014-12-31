@@ -3,7 +3,7 @@
 # script ist taken from
 # https://github.com/tutumcloud/tutum-docker-mariadb
 
-VOLUME_HOME="/var/lib/mysql"
+VOLUME_HOME="/data"
 
 if [[ ! -d $VOLUME_HOME/mysql ]]; then
     echo "=> An empty or uninitialized MariaDB volume is detected in $VOLUME_HOME"
