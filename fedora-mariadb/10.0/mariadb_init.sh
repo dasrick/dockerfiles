@@ -1,18 +1,9 @@
-#!/bin/sh
-chown -R mysql:mysql /var/lib/mysql
-mysql_install_db --user mysql > /dev/null
+#!/bin/bash
 
-#mysqld_safe --user mysql &
-#sleep 5s
+# script ist taken from
+# https://github.com/tutumcloud/tutum-docker-mariadb
 
-#mysql -v < /mariadb.sql
-#sleep 5s
-
-#ps -wef | grep mysql | grep -v grep | awk '{print $2}' | xargs kill -9
-
-#mysqld_safe --user mysql
-
-#####
+/usr/bin/mysqld_safe > /dev/null 2>&1 &
 
 RET=1
 while [[ RET -ne 0 ]]; do
