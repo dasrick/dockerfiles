@@ -2,6 +2,7 @@ FROM fedora:20
 
 MAINTAINER Enrico Hoffmann <dasrick@gmail.com>
 
+# Expose environment variables
 ENV NGINX_VERSION 1.7.9
 
 # Install wget, gcc, make, regex and openssl
