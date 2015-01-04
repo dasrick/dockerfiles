@@ -1,6 +1,6 @@
 # PHP-FPM
 
-Base image for PHP-FPM runnning on with NGINX on Fedora20
+Base image for PHP-FPM runnning with NGINX on Fedora20
 
 Following stuff will be installed
 
@@ -11,4 +11,4 @@ Following stuff will be installed
 * git
 * composer
 
-Take a lokk into basic php.ini ...
+Take a look into basic php.ini ...
