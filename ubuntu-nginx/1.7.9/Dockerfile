@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM dockerfile/ubuntu
 
 MAINTAINER Enrico Hoffmann <dasrick@gmail.com>
 
