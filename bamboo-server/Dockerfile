@@ -14,8 +14,9 @@ EXPOSE 8085
 EXPOSE 54663
 
 # Add service for auto run
-#ADD bamboo-server.sh /etc/service/bamboo-server/run
-ADD bamboo-server.sh /tmp
+ADD bamboo-server.sh /etc/service/bamboo-server/run
+RUN chmod +x /etc/service/bamboo-server/run
+#ADD bamboo-server.sh /tmp
 
 # Make sure we get latest packages
 RUN apt-get update && apt-get upgrade -y
