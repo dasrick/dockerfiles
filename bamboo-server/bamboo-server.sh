@@ -5,10 +5,12 @@ set -e # Exit on errors
 echo "-> Starting Bamboo Agent ..."
 echo "   - BAMBOO_VERSION: $BAMBOO_VERSION"
 echo "   - BAMBOO_HOME:    $BAMBOO_HOME"
+echo "   - BAMBOO_SRC:     $BAMBOO_SRC"
 
 mkdir -p $BAMBOO_HOME
+mkdir -p $BAMBOO_SRC
 
-BAMBOO_DIR=/opt/atlassian-bamboo-$BAMBOO_VERSION
+BAMBOO_DIR=$BAMBOO_SRC/atlassian-bamboo-$BAMBOO_VERSION
 
 if [ -d $BAMBOO_DIR ]; then
   echo "-> Bamboo $BAMBOO_VERSION already found at $BAMBOO_DIR. Skipping download."
@@ -17,7 +19,7 @@ else
   echo "-> Downloading Bamboo $BAMBOO_VERSION from $BAMBOO_TARBALL_URL ..."
   wget --progress=dot:mega $BAMBOO_TARBALL_URL -O /tmp/atlassian-bamboo.tar.gz
   echo "-> Extracting to $BAMBOO_DIR ..."
-  tar xzf /tmp/atlassian-bamboo.tar.gz -C /opt
+  tar xzf /tmp/atlassian-bamboo.tar.gz -C $BAMBOO_SRC
   rm -f /tmp/atlassian-bamboo.tar.gz
   echo "-> Installation completed"
 fi

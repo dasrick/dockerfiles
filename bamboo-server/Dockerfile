@@ -8,6 +8,7 @@ CMD ["/sbin/my_init"]
 # Expose environment variables
 ENV BAMBOO_VERSION 5.7.2
 ENV BAMBOO_HOME /home/bamboo
+ENV BAMBOO_SRC /opt
 
 # Expose web and agent ports
 EXPOSE 8085
@@ -16,7 +17,6 @@ EXPOSE 54663
 # Add service for auto run
 ADD bamboo-server.sh /etc/service/bamboo-server/run
 RUN chmod +x /etc/service/bamboo-server/run
-#ADD bamboo-server.sh /tmp
 
 # Make sure we get latest packages
 RUN apt-get update && apt-get upgrade -y
