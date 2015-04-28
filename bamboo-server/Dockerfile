@@ -7,7 +7,7 @@ CMD ["/sbin/my_init"]
 
 # Expose environment variables
 ENV BAMBOO_VERSION 5.7.2
-ENV BAMBOO_HOME /home/bamboo
+ENV BAMBOO_HOME /opt/bamboo-home
 ENV BAMBOO_SRC /opt
 
 # Expose web and agent ports
@@ -28,3 +28,5 @@ RUN apt-get install -yq oracle-java7-installer git
 
 # clean up the system
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN mkdir -p $BAMBOO_HOME
+VOLUME [$BAMBOO_HOME]
